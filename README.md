@@ -27,9 +27,10 @@ python project_vectors.py
 ```
 
 These will produce:
-- `optimal_num_clusters.pkl` — Best cluster count based on density.
-- `cluster_to_value.pkl` — Cluster ID → Neuron list.
-- `value_to_cluster.pkl` — Neuron (layer, index) → Cluster ID.
+- optimal_num_clusters.pkl: Best cluster count based on density.
+- elastic_projections.pkl: Maps neurons (layer, neuron) to their top-k tokens.
+- cluster_to_value.pkl: Maps cluster ID to list of neuron indices (layer, neuron).
+- value_to_cluster.pkl: Inverse of the above mapping.
 
 ---
 
