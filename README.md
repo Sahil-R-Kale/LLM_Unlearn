@@ -4,7 +4,7 @@ A toolkit for analyzing, clustering, and potentially unlearning knowledge from i
 
 ---
 
-## 📺 Installation
+## Installation
 
 ```bash
 git clone https://github.com/Sahil-R-Kale/LLM_Unlearn.git
@@ -14,7 +14,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Find Optimal Number of Clusters
 ```bash
