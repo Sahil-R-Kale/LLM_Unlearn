@@ -28,7 +28,7 @@ python project_vectors.py
 
 These will produce:
 - optimal_num_clusters.pkl: Best cluster count based on density.
-- elastic_projections.pkl: Maps neurons (layer, neuron) to their top-k tokens.
+- elastic_search_data.pkl: Maps neurons (layer, neuron) to their top-k tokens.
 - cluster_to_value.pkl: Maps cluster ID to list of neuron indices (layer, neuron).
 - value_to_cluster.pkl: Inverse of the above mapping.
 
