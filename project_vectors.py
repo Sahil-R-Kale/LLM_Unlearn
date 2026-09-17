@@ -105,15 +105,32 @@ def create_streamlit_data(path_cluster_to_value, path_value_to_cluster, model, m
         pickle.dump(inv_map, handle, protocol=pickle.HIGHEST_PROTOCOL)
     return
 
-model = GPT2LMHeadModel.from_pretrained(config["model_name"])
-model.to(config["device"])
-tokenizer = GPT2Tokenizer.from_pretrained(config["model_name"])
+def main():
+    model = GPT2LMHeadModel.from_pretrained(config["model_name"])
+    model.to(config["device"])
+    tokenizer = GPT2Tokenizer.from_pretrained(config["model_name"])
 
-dict_es = create_elastic_search_data(config["elastic_projections_path"], model, config["model_name"], tokenizer, config["top_k_for_elastic"])
-create_streamlit_data(config["streamlit_cluster_to_value_file_path"], config["streamlit_value_to_cluster_file_path"], model, config["model_name"], config["num_clusters"])
+    dict_es = create_elastic_search_data(
+        config["elastic_projections_path"],
+        model,
+        config["model_name"],
+        tokenizer,
+        config["top_k_for_elastic"],
+    )
+    create_streamlit_data(
+        config["streamlit_cluster_to_value_file_path"],
+        config["streamlit_value_to_cluster_file_path"],
+        model,
+        config["model_name"],
+        config["num_clusters"],
+    )
 
-# Testing out few top tokens per vector
-for (layer, neuron), top_tokens in list(dict_es.items())[:1]:
-    print(f"\nLayer {layer}, Neuron {neuron}:")
-    for token_id, token, score in top_tokens:
-        print(f"  {token_id:5d}  {token:12s}  Score: {score:.4f}")
+    # Testing out few top tokens per vector
+    for (layer, neuron), top_tokens in list(dict_es.items())[:1]:
+        print(f"\nLayer {layer}, Neuron {neuron}:")
+        for token_id, token, score in top_tokens:
+            print(f"  {token_id:5d}  {token:12s}  Score: {score:.4f}")
+
+
+if __name__ == "__main__":
+    main()
