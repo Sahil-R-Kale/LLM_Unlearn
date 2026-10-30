@@ -1,13 +1,11 @@
 import os
 import pickle
-import json
 import warnings
 import numpy as np
 import torch
 from tqdm import tqdm
 from sklearn.cluster import AgglomerativeClustering
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
-from pyhocon import ConfigFactory
 
 warnings.filterwarnings('ignore')
 
