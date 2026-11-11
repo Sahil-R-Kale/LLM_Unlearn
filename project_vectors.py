@@ -54,7 +54,7 @@ def create_elastic_search_data(path, model, model_name, tokenizer, top_k):
             k = (i, j)
             cnt = inv_d[(i, j)]
             ids = np.argsort(-logits[cnt])[:top_k]
-            tokens = [tokenizer._convert_id_to_token(x) for x in ids]
+            tokens = tokenizer.convert_ids_to_tokens(ids.tolist())
             dict_es[k] = [(ids[b], tokens[b], logits[cnt][ids[b]]) for b in range(len(tokens))]
     with open(path, 'wb') as handle:
         pickle.dump(dict_es, handle, protocol=pickle.HIGHEST_PROTOCOL)
